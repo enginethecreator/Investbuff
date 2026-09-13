@@ -34,7 +34,7 @@ function CustomTooltip({ active, payload, label }: ChartTooltipProps) {
       )}
       {payload.map((entry, index) => {
         const raw = entry.value ?? 0;
-        const value = typeof raw === "number" ? raw : parseFloat(String(raw));
+        const formattedValue = typeof raw === "number" ? raw : parseFloat(String(raw));
         const formatted =
           typeof raw === "number"
             ? new Intl.NumberFormat("en-US", {
@@ -42,7 +42,7 @@ function CustomTooltip({ active, payload, label }: ChartTooltipProps) {
                 currency: "USD",
                 minimumFractionDigits: 2,
                 maximumFractionDigits: 2,
-              }).format(raw)
+              }).format(formattedValue)
             : String(raw);
         return (
           <div key={index} className="flex items-center gap-2 text-sm">

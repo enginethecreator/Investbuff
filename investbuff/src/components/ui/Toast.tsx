@@ -47,13 +47,13 @@ const toastStyles: Record<ToastType, { bg: string; border: string }> = {
   warning: { bg: "rgba(217,119,6,0.12)", border: "#d97706" },
 };
 
-interface ToastProps {
+export interface ToastProps {
   type: ToastType;
   message: string;
   onDismiss: () => void;
 }
 
-function Toast({ type, message, onDismiss }: ToastProps) {
+export function Toast({ type, message, onDismiss }: ToastProps) {
   const [exiting, setExiting] = useState(false);
   const style = toastStyles[type];
 
@@ -97,9 +97,7 @@ function Toast({ type, message, onDismiss }: ToastProps) {
   );
 }
 
-export { Toast } from "./Toast";
-
-function ToastContainer() {
+export function ToastContainer() {
   const { toasts, removeToast } = useToast();
 
   return createPortal(
